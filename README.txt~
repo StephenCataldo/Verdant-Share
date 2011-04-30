@@ -1,0 +1,39 @@
+Verdant Share modules (rideshare will be published first; taxi-match and roomshare are used internally) use flags, views and cck to create chart and map
+views of people who need to share a ride/taxi/room.  They have many depedencies
+on (hopefully) common modules.  
+
+The basic flow from a devel perspective:
+* There is a cck type for rideshare, 
+set as a content_profile, meaning each signed
+in user gets one instance of that type.
+* Users should be encouraged to have Contact module settings left on,
+or things won't really work well.
+* The form for editing their instance can be on a profile page, a popup (not
+yet implemented but easy), or my preference a block on the view of other
+people's posts.
+* There are two views of other people's posts: a map, and a chart.  Flags
+are used heavily to allow sorting.  
+
+From a user's perspective: go to the link for ridesharing and you'll see
+both a form for your post and everyone else's post.  Optional to have users
+create their post when they sign up for the conference.
+
+The intention is that these will be standardized
+enough to be easy to edit: add or subtract fields to the cck-type or
+to the view.  I'm interested to hear what other people do with the module.
+
+Admin tip:
+* The views use Exposed Forms, which I don't intent to be visible to be users
+but are great to use as an admin tuning the view parameters.
+* The dates exposed forms gave me lots of problems, and I haven't dealt with
+them yet -- the "four hour window" goes an extra day in theory, and merely
+seems to more or less work, right now.
+
+Help and advice are very welcome!  
+
+
+
+History:
+Opensource from VerdantEvent.com
+First used at gmic2010.verdantevent.com
+Based on SpaceShare.com system.

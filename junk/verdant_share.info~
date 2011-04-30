@@ -1,0 +1,23 @@
+name = Verdant Share: Ridesharing for Conferences
+description = Coordinates Views, Flags and Content_Profile to share rides going to DrupalCon-like conferences with stub code for rooms, flights  Much is based on SpaceShare
+core = 6.x
+version = "6.x-0.3"
+package = Verdant
+dependencies[] = views
+dependencies[] = views_ui
+dependencies[] = text
+dependencies[] = date
+dependencies[] = date_popup
+dependencies[] = content_profile
+dependencies[] = flag
+dependencies[] = gmap_taxonomy
+dependencies[] = gmap
+dependencies[] = location
+dependencies[] = location_node
+dependencies[] = php
+dependencies[] = contact
+dependencies[] = fieldgroup
+dependencies[] = auto_nodetitle
+dependencies[] = content_taxonomy_options
+			/* php filter for the smart header in the view, not sure if will
+			ultimately need? */ 

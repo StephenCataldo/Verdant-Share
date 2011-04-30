@@ -1,0 +1,72 @@
+					 
+/* Views for matching times */
+/* http://thedrupalblog.com/passing-date-ranges-view-arguments */
+// define the db_rewrite_sql hook:
+function verdant_share_db_rewrite_sql($query, $primary_table = 'n', $primary_field = 'nid', $args = array()) {
+  // search for the view
+  if (is_object($args['view']) && $args['view']->name=='flight_connections') {
+    // if there are no view arguments, don't bother continuing     
+   	if (!is_array($args['view']->args)) return;
+
+		// not sure if above is right... I'm getting no arg as an empty array
+		//	which still sets is_array true
+		dsm(count($args['view']->args));
+		if (count($args['view']->args) < 1 ) return;
+
+		// the argument indicates which field to operate on, arrive, depart?
+		$what = $args['view']->args[0]; // for example, arrival time.
+		if ( $what == 'departure' ) {
+			$field = 'field_departure_time';
+			dsm("depart");
+		} elseif ( $what == 'arrival' ) {
+			$field = 'field_arrival_time';
+			dsm("arrive");
+		} else {
+			return;
+		}
+
+
+		// Find the start and end time for that field, for the current user
+		global $user;
+		$my_trip = content_profile_load('share_flight', $user->uid);
+		//dsm($my_trip->{$field}[0][value]); // example: 2010-02-13 02:00:00
+		$date = $my_trip->{$field}[0][value];
+		$time = strtotime($date);  // seconds since 1970
+		$endDate = date('Y-m-d H:m:s', $time + 7200); // add 2 hours
+		$startDate =  date('Y-m-d H:m:s', $time - 7200); // subtract 2 hours
+		dsm(array("plus and minus two hours", $dateplus, $dateminus));
+
+
+    // validate dates. exit function if issue -> cataldo: eh. 
+							    //if (strlen($startDate) && !checkdate(date('m', strtotime($startDate)), date('d', strtotime($startDate)), date('Y', strtotime($startDate)))) return;
+							    //if (strlen($endDate) && !checkdate(date('m', strtotime($endDate)), date('d', strtotime($endDate)), date('Y', strtotime($endDate)))) return;
+
+		// create var for where clause
+		$where = "";
+
+		// define table alias
+		//$tableAlias = 'node_data_field_departure_time_field_departure_time_value';
+		$tableAlias = "content_field_" . $what . "_time";
+
+
+		$where = " {$tableAlias}.field_$what" . "_time_value >= '$startDate' ";
+	 	$where .= " and ";
+		$where .= " {$tableAlias}.field_$what" . "_time_value <= '$endDate' ";
+
+		//return array('join' => "inner join {content_type_share_flight} $tableAlias on node.vid = $tableAlias.vid and $where");
+
+    return array('join' => "inner join {content_field_$what" . "_time} $tableAlias on node.vid = $tableAlias.vid and $where");
+  }
+
+}
+
+/*
+Now, you can pass the date ranges in as arguments using the views_embed_view function:
+<?php
+$viewName = 'MYVIEWNAME';
+$arg = array('2008-01-01','2008-12-31');
+$viewsHtml = views_embed_view($viewName, 'default', $arg);
+?>
+ */
+
+?>

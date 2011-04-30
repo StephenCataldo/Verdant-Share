@@ -1,0 +1,72 @@
+0a1,11
+> <?php
+> /* And the view, originally an export
+>         tips: http://drupal.org/node/685432 */
+>   // replaced with line below... $view = new view;
+>   // Create a new view
+> function _verdant_share_views_default_views($quicklinks) {
+> 
+>   // define the view with code form an export (will be modified?)
+> 
+> 	/* BEGIN EXPORT, look for $quicklinks position in last version */
+> 
+387a399,406
+> /* remove: $handler->override_option('arguments', array(
+>   'date_argument' => array(
+>     'id' => 'date_argument',
+>     'table' => 'node',
+>     'field' => 'date_argument',
+>   ),
+> ));
+>  */
+550,551c569,570
+<   'type' => 'normal',
+<   'title' => 'Rideshare Map',
+---
+>   'type' => 'none',
+>   'title' => '',
+553c572
+<   'weight' => '0',
+---
+>   'weight' => 0,
+710,714c729,735
+< 	<p><strong>Match by:</strong>: <a href="?flagged_favorites=All&unflagged_remove=0" 
+< 			title="All shares except those you have removed" >All</a> | <a href="?flagged_favorites=All&unflagged_remove=0&date_filter[min][date]=2010-06-15&date_filter[min][time]=03%3A30&date_filter[max][date]=2010-06-15&date_filter[max][time]=07%3A30" 
+< 			title="" >Match My Arrival -- 4 hour window</a> | <a href="?flagged_favorites=All&unflagged_remove=0&date_filter_depart[min][date]=2010-06-17&date_filter_depart[min][time]=10%3A30&date_filter_depart[max][date]=2010-06-17&date_filter_depart[max][time]=14%3A30" 
+< 			title="" >Match My Departure  -- 4 hour window</a> | <a href="?flagged_favorites=All&unflagged_remove=0&date_filter_depart[min][date]=2010-06-17&date_filter_depart[min][time]=10%3A30&date_filter_depart[max][date]=2010-06-17&date_filter_depart[max][time]=14%3A30&date_filter[min][date]=2010-06-15&date_filter[min][time]=03%3A30&date_filter[max][date]=2010-06-15&date_filter[max][time]=07%3A30" 
+< 			title="" >Matches</a> | <a href="?flagged_favorites=1&unflagged_remove=0" 
+---
+> 	<p>' . $quicklinks );
+> /*  From EXPORT, replaced with $quicklinks
+> 	<a href="?flagged_favorites=All&unflagged_remove=0" 
+> 			title="All shares except those you have removed" >Show All</a> | <a href="?flagged_favorites=All&unflagged_remove=0&field_arrival_time_value_many_to_one[]=2010-06-24 18:00:00" 
+> 			title="" >Match My Arrival</a> | <a href="?flagged_favorites=All&unflagged_remove=0&field_departure_time_value_many_to_one[]=" 
+> 			title="" >Match My Departure</a> | <a href="?flagged_favorites=All&unflagged_remove=0&field_departure_time_value_many_to_one[]=&field_arrival_time_value_many_to_one[]=2010-06-24 18:00:00" 
+> 			title="" >Matche Both</a> | <a href="?flagged_favorites=1&unflagged_remove=0" 
+716c737,738
+< 			title="" >Check Previously Removed</a> | <a href="javascript: var obj= document.getElementById(views-exposed-form-verdant-module-generated-rideshare-page-2); obj.style.visibility = \'invisible\'">Power Options</a>');
+---
+> 			title="" >Check Previously Removed</a> | <a href="javascript: var obj= document.getElementById(views-exposed-form-verdant-module-generated-rideshare-page-2); obj.style.visibility = \'invisible\'">Power Options</a>'); 
+>  */
+737,738c759,760
+<   'type' => 'normal',
+<   'title' => 'Rideshare Map',
+---
+>   'type' => 'none',
+>   'title' => '',
+740c762
+<   'weight' => '0',
+---
+>   'weight' => 0,
+750a773,783
+> 
+> 
+> /*    END EXPORT  */
+> 
+>   // Let users play with this (is that a good idea?)
+>   $views[$view->name] = $view;
+> 
+>   return $views;
+> }
+> 
+> 
