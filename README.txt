@@ -62,3 +62,6 @@ History:
 Opensource from VerdantEvent.com
 First used at gmic2010.verdantevent.com
 Based on SpaceShare.com system.
+
+
+Added GIT on 4/29/2011
