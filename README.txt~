@@ -31,7 +31,32 @@ seems to more or less work, right now.
 
 Help and advice are very welcome!  
 
+Carpool Module: What's Here
 
+
+
+	1.	Views
+	⁃	map
+	⁃	chart
+	2.	Input
+	⁃	Alternate: popup instead of block?
+	⁃	Default Time: Custom value for From date:  
+	⁃	Content Profile.  You could probably change this to work with other setups… please write it up if you do!
+	3.	Settings
+	⁃	set the date, location of the event
+	⁃	admin mode: unhide the hidden views exposed forms
+
+Questions
+	•	Should I put locations as a field, or as part of the cck (seems fine either way, no?)
+
+Late in Dev Process
+	•	create css file with at least blanks, or suggestions, for formatting
+	•	Trying to get distance working, currently aimed to have the argument for the nid of the current user to set the locations that everything else is based on… no luck
+	•	Permissions for anonymous = no rideshare
+
+Future Version Wish-List
+	•	Currently, the views use a 4-hour window for matching arrivals and departures.  Make it controllable.
+	•	Timezones.  Very subtle: if you drive from one timezone to another, each trip starts in a different timezone.   Not sure what I want it to do yet, never mind how to program it.  On second thought, the best time for matching is the at-event time not the at-home time (especially for long trips with short carpools), so just use the event timezone (no timezone). ?.
 
 History:
 Opensource from VerdantEvent.com
