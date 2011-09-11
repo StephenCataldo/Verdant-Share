@@ -1,6 +1,12 @@
-Verdant Share modules (rideshare will be published first; taxi-match and roomshare are used internally) use flags, views and cck to create chart and map
-views of people who need to share a ride/taxi/room.  They have many depedencies
-on (hopefully) common modules.  
+Verdant Share modules (rideshare will be published first; taxi-match and roomshare are used internally at VerdantEvent but are not modules 2011/5)
+are designed for a conference (like a DrupalCon) where people create a 
+Drupal account for the event and then need to figure out their travel to the
+event  (Content Profile, at least for now, is required).
+
+Uses flags, views and cck to create chart and map (gmap)
+views of people who need to share a ride/taxi/room.  There are many depedencies
+on (hopefully) common modules including Content Profile to give each person
+one share of each type.  
 
 The basic flow from a devel perspective:
 * There is a cck type for rideshare, 
